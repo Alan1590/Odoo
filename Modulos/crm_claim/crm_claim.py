@@ -105,6 +105,7 @@ class crm_claim(base_stage, osv.osv):
         'email_from': fields.char('Email', size=128, help="Destination email for email gateway."),
         'partner_phone': fields.char('Phone', size=32),
         'partner_city': fields.char('City',size=256),            
+        'partner_street': fields.char('Street',size=256),            
         'stage_id': fields.many2one ('crm.claim.stage', 'Stage', track_visibility='onchange',
                 domain="['&',('fold', '=', False),'|', ('section_ids', '=', section_id), ('case_default', '=', True)]"),
         'cause': fields.text('Root Cause'),
@@ -177,10 +178,12 @@ class crm_claim(base_stage, osv.osv):
             return {'value': {'email_from': False,
                               'partner_phone': False,
                               'partner_city': False,
+                              'partner_street': False,
+
                             }
                    }
         address = self.pool.get('res.partner').browse(cr, uid, part)
-        return {'value': {'email_from': address.email, 'partner_phone': address.phone, 'partner_city': address.city}}
+        return {'value': {'email_from': address.email, 'partner_phone': address.phone, 'partner_city': address.city, 'partner_street':address.street}}
 
     def copy(self, cr, uid, id, default=None, context=None):
         claim = self.browse(cr, uid, id, context=context)

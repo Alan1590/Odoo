@@ -207,6 +207,17 @@ msgid "Partner"
 msgstr "Partner"
 
 #. module: crm_claim
+#: field:crm.claim,partner_street:0
+msgid "Street"
+msgstr "Calle"
+
+#. module: crm_claim
+#: view:crm.claim:0
+#: field:crm.claim,partner_city:0
+msgid "City"
+msgstr "Ciudad"
+
+#. module: crm_claim
 #: view:crm.claim.report:0
 msgid "Month of claim"
 msgstr ""
@@ -238,7 +249,7 @@ msgstr "Responsable del problema"
 #: view:crm.claim.report:0
 #: field:crm.claim.report,priority:0
 msgid "Priority"
-msgstr "MAS sm"
+msgstr "Prioridad"
 
 #. module: crm_claim
 #: field:crm.claim.stage,fold:0
@@ -941,7 +952,7 @@ msgstr:"Resolucición"
 #. module: crm_claim
 #: report:crm.claim:0
 msgid:"Parts"
-msgstr:"Respuestos"
+msgstr:"Repuestos"
 
 #. module: crm_claim
 #: report:crm.claim:0

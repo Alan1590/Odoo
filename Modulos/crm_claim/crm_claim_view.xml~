@@ -83,8 +83,6 @@
                 <tree string="Claims" colors="blue:state=='pending' and not(date_deadline and (date_deadline &lt; current_date));gray:state in ('close', 'cancel');red:date_deadline and (date_deadline &lt; current_date)">
                     <field name="name"/>
                     <field name="partner_id"/>
-                    <field name="partner_street"/>
-                    <field name="partner_city"/>
                     <field name="user_id"/>
                     <field name="date"/>
                     <field name="stage_id"/>
@@ -129,9 +127,7 @@
                                     <separator colspan="2" string="Claim Reporter"/>
                                     <field name="partner_id" string="Partner"
                                         on_change="onchange_partner_id(partner_id)"/>
-                                    <field name="partner_street"/>
-                    		    <field name="partner_city"/>
-				    <field name="partner_phone"/>
+                                    <field name="partner_phone"/>
                                     <field name="email_from" widget="email"/>
                                 </group>
                                 <group colspan="2" col="2" groups="base.group_user">
