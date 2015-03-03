@@ -15,7 +15,7 @@ class ReporteIva():
         self.uid = self.sock_common.login(bd, user, pwd)
 
         #replace localhost with the address of the server
-        self.sock = xmlrpclib.ServerProxy('https://adm.marinozzi.com.ar/xmlrpc/object')
+        self.sock = xmlrpclib.ServerProxy('')
 
     def recuperar_partner(self,id_partner):
         args_partner = [('id', '=', id_partner),('active', '=', 'false'),('active', '=', 'true')]
