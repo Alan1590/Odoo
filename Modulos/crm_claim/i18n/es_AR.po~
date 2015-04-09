@@ -212,7 +212,6 @@ msgid "Street"
 msgstr "Calle"
 
 #. module: crm_claim
-#: view:crm.claim:0
 #: field:crm.claim,partner_city:0
 msgid "City"
 msgstr "Ciudad"
@@ -951,8 +950,37 @@ msgstr:"Resolucición"
 
 #. module: crm_claim
 #: report:crm.claim:0
+msgid:"Code"
+msgstr:"Código"
+
+#. module: crm_claim
+#: report:crm.claim:0
 msgid:"Parts"
 msgstr:"Repuestos"
+
+#. module: crm_claim
+#: report:crm.claim:0
+msgid:"Serial number"
+msgstr:"Número de serie"
+
+#. module: crm_claim
+#: report:crm.claim:0
+msgid:"Serial number"
+msgstr:"Número de serie"
+
+
+#. module: crm_claim
+#: report:crm.claim:0
+msgid:"Serial number"
+msgstr:"Número de serie"
+
+
+#. module: crm_claim
+#: report:crm.claim:0
+msgid:"Serial number"
+msgstr:"Número de serie"
+
+
 
 #. module: crm_claim
 #: report:crm.claim:0

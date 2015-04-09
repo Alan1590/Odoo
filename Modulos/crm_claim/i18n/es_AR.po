@@ -950,8 +950,37 @@ msgstr:"Resolucición"
 
 #. module: crm_claim
 #: report:crm.claim:0
+msgid:"Code"
+msgstr:"Código"
+
+#. module: crm_claim
+#: report:crm.claim:0
 msgid:"Parts"
 msgstr:"Repuestos"
+
+#. module: crm_claim
+#: report:crm.claim:0
+msgid:"Serial number"
+msgstr:"Número de serie"
+
+#. module: crm_claim
+#: report:crm.claim:0
+msgid:"Technicians"
+msgstr:"Técnicos/s"
+
+
+#. module: crm_claim
+#: report:crm.claim:0
+msgid:"Time"
+msgstr:"Tiempo"
+
+
+#. module: crm_claim
+#: report:crm.claim:0
+msgid:"Serial number"
+msgstr:"Número de serie"
+
+
 
 #. module: crm_claim
 #: report:crm.claim:0

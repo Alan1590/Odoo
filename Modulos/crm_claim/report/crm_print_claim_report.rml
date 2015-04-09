@@ -120,7 +120,19 @@
           <para style="P2">Date [[ time.strftime('%d/%m/%Y') ]] </para>
         </td>
       </tr>
+
     </blockTable>
+    <blockTable colWidths="241.0,241.0" style="Tabla1">
+      <tr>
+        <td>
+          <para style="Table_20_Contents">Technicians </para>
+        </td>
+        <td>
+          <para style="Table_20_Contents">Time </para>
+        </td>
+      </tr>
+    </blockTable>
+
     <para style="Standard">
       <font color="white"> </font>
     </para>
@@ -145,6 +157,14 @@
     <para style="Standard">
       <font color="white"> </font>
     </para>
+    <blockTable colWidths="482.0" style="Tabla1">
+      <tr>
+        <td>
+          <para style="Table_20_Contents">Titulo </para>
+          <para style="Table_20_Contents">[[ c.name ]] </para>
+        </td>
+      </tr>
+    </blockTable>
     <blockTable colWidths="482.0" style="Tabla2">
       <tr>
 	
@@ -287,47 +307,54 @@
     <para style="Standard">
       <font color="white"> </font>
     </para>
-    <blockTable colWidths="482.0" style="Tabla4">
+    <blockTable colWidths="160.6,160.6,160.6" style="Tabla5">
       <tr>
+        <td>
+          <para style="Table_20_Contents">Code </para>
+        </td>
         <td>
           <para style="Table_20_Contents">Parts </para>
         </td>
-      </tr>
-      <tr>
         <td>
-          <para style="Table_20_Contents">
-            <font color="black">----------------------------------------------------------------------------------------------------------------------------------</font>
-          </para>
+          <para style="Table_20_Contents">Serial number </para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="Table_20_Contents">
-            <font color="black">----------------------------------------------------------------------------------------------------------------------------------</font>
-          </para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
         </td>
-      </tr>
-      <tr>
         <td>
-          <para style="Table_20_Contents">
-            <font color="black">----------------------------------------------------------------------------------------------------------------------------------</font>
-          </para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
         </td>
-      </tr>
-      <tr>
         <td>
-          <para style="Table_20_Contents">
-            <font color="black">----------------------------------------------------------------------------------------------------------------------------------</font>
-          </para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
+          <para style="Table_20_Contents">----------------------------------------</para>
         </td>
       </tr>
-      <tr>
-        <td>
-          <para style="Table_20_Contents">
-            <font color="black">----------------------------------------------------------------------------------------------------------------------------------</font>
-          </para>
-        </td>
-      </tr>
+
     </blockTable>
     <blockTable colWidths="120.5,120.5,120.5,120.5" repeatRows="2" style="Tabla5">
       <tr>
