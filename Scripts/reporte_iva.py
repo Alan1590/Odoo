@@ -3,19 +3,19 @@ __author__ = 'alan'
 import xmlrpclib
 import datetime
 
-user='admin'
-pwd='rf52*/rf'
-bd='marinozzi_prod'
+user=''
+pwd=''
+bd=''
 
 class ReporteIva():
 
     def __init__(self):
         # Get the uid
-        self.sock_common = xmlrpclib.ServerProxy ('https://adm.marinozzi.com.ar/xmlrpc/common')
+        self.sock_common = xmlrpclib.ServerProxy ('')
         self.uid = self.sock_common.login(bd, user, pwd)
 
         #replace localhost with the address of the server
-        self.sock = xmlrpclib.ServerProxy('https://adm.marinozzi.com.ar/xmlrpc/object')
+        self.sock = xmlrpclib.ServerProxy('')
 
     def recuperar_partner(self,id_partner):
         args_partner = [('id', '=', id_partner),('active', '=', 'false'),('active', '=', 'true')]
