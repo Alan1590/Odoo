@@ -105,7 +105,8 @@ class sale_order(osv.osv):
             res[order.id]['amount_untaxed'] = cur_obj.round(cr, uid, cur, val1)
             res[order.id]['amount_total'] = res[order.id]['amount_untaxed'] + res[order.id]['amount_tax']
             crm_stage = self.pool.get('crm.lead')
-            crm_stage.write(cr, uid, [order_col.oportunity_ref.id], {'planned_revenue': res[order.id]['amount_total']}, context=context)
+            if order_col != False:
+                crm_stage.write(cr, uid, [order_col.oportunity_ref.id], {'planned_revenue': res[order.id]['amount_total']}, context=context)
 
         return res
 
@@ -466,7 +467,8 @@ class sale_order(osv.osv):
         order = self.browse(cr, uid, ids, context)
         order_col = order[0]                
         crm_stage = self.pool.get('crm.lead')
-        crm_stage.write(cr, uid, [order_col.oportunity_ref.id], {'stage_id': stage}, context=context)
+        if order_col.oportunity_ref.id != False:
+           crm_stage.write(cr, uid, [order_col.oportunity_ref.id], {'stage_id': stage}, context=context)
 
         
 

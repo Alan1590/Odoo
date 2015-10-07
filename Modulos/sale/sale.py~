@@ -105,7 +105,8 @@ class sale_order(osv.osv):
             res[order.id]['amount_untaxed'] = cur_obj.round(cr, uid, cur, val1)
             res[order.id]['amount_total'] = res[order.id]['amount_untaxed'] + res[order.id]['amount_tax']
             crm_stage = self.pool.get('crm.lead')
-            crm_stage.write(cr, uid, [order_col.oportunity_ref.id], {'planned_revenue': res[order.id]['amount_total']}, context=context)
+            if order_col != False:
+                crm_stage.write(cr, uid, [order_col.oportunity_ref.id], {'planned_revenue': res[order.id]['amount_total']}, context=context)
 
         return res
 
@@ -466,7 +467,8 @@ class sale_order(osv.osv):
         order = self.browse(cr, uid, ids, context)
         order_col = order[0]                
         crm_stage = self.pool.get('crm.lead')
-        crm_stage.write(cr, uid, [order_col.oportunity_ref.id], {'stage_id': stage}, context=context)
+        if order_col.oportunity_ref.id not False:
+           crm_stage.write(cr, uid, [order_col.oportunity_ref.id], {'stage_id': stage}, context=context)
 
         
 
@@ -586,6 +588,7 @@ class sale_order(osv.osv):
             sale_order_line_obj.write(cr, uid, [l.id for l in  sale.order_line],
                     {'state': 'cancel'})
         self.write(cr, uid, ids, {'state': 'cancel'})
+        self.crm_stage(cr, uid, ids, 8, context)
         return True
 
     def action_button_confirm(self, cr, uid, ids, context=None):
@@ -837,9 +840,7 @@ class sale_order_line(osv.osv):
     def button_cancel(self, cr, uid, ids, context=None):
         for line in self.browse(cr, uid, ids, context=context):
             if line.invoiced:
-                raise osv.except_osv(_('Invalid Action!'), _('You cannot cancel a sales order line that has already been invoiced.'))
-        
-        self.crm_stage(cr, uid, ids, 7, context)
+                raise osv.except_osv(_('Invalid Action!'), _('You cannot cancel a sales order line that has already been invoiced.'))        
         return self.write(cr, uid, ids, {'state': 'cancel'})
 
     def button_confirm(self, cr, uid, ids, context=None):
