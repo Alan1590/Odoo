@@ -1,0 +1,33 @@
+<!--Custom report.-->
+<openerp>
+<data>
+<template id="report_without_prices_document">
+    <t t-call="report.external_layout">
+        <div class="page">
+            <div class="row">
+                <h3>Title</h3>
+            </div>
+        </div>
+    </t>
+</template>
+ 
+<template id="report_without_prices">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'crm_claim_location.report_without_prices_document')"/>
+        </t>
+    </t>
+</template>
+ <report 
+            id="custom_report_without_prices"
+            model="account.invoice"
+            string="Invoice without prices"
+            report_type="qweb-pdf"
+            name="account.report_without_prices"
+            attachment_use="False"
+            file="account.report_without_prices"
+        />
+</data>
+</openerp>
+
+

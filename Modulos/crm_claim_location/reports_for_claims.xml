@@ -1,0 +1,9 @@
+<report 
+            id="custom_print_claims"
+            model="crm.claim"
+            string="Print Claims"
+            report_type="qweb-pdf"
+            name="crm.report_claims"
+            attachment_use="False"
+            file="crm.report_claims"
+        />
