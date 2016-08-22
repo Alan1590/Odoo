@@ -1,0 +1,30 @@
+<!--Custom report.-->
+<openerp>
+<data>
+<template id="wizard_relation_crm">
+
+        <record model="ir.ui.view" id="crm_relation_wizard_form_view">
+            <field name="name">crm_relation_wizard.form</field>
+            <field name="model">crm.relation.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Wizard for relations">
+                    <group>
+                        <field name="initial_state"/>
+                        <field name="move_to_state"/>
+                        <field name="update_value"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+<act_window id="launch_wizard_relation_crm"
+            name="Launch the Wizard"
+            src_model="crm_lead"
+            res_model="crm.relation.wiz"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"/>
+
+</data>
+</openerp>
