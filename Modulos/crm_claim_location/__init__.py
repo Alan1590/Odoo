@@ -19,6 +19,6 @@
 #
 ##############################################################################
 
-import crm_relation
+import crm_claim_location
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 
