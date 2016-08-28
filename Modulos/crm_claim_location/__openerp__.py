@@ -36,7 +36,7 @@ This application extend the module crm claim and add location fields how street,
     'depends': ['crm_claim'],
     'data': [
         'crm_claim_location_view.xml',        
-        'views/report_claims.xml'
+        'views/print_claim_report.xml'
     ],
     'installable': True,
     'auto_install': False,
