@@ -5,95 +5,14 @@
 	<t t-foreach="docs" t-as="c">
 	    <t t-call="report.external_layout">
                 <div class="page">
-                    <h4 style="text-align: center;">Reclamacion: <span t-field="c.id" /></h4>
-                        <br/>
-                        <table class="client" style="width:100%">
-                                <thead>
-                                        <tr>
-                                        <td>
-					<strong> Customer </strong>					
-					<span t-field="c.partner_id" />
-                                        <br/>
-                                        <br/>
-					</td> 
-					<td>
-
-                                        <strong>Street</strong>
-					<span t-field="c.partner_street" /> 
-                                        <br/>
-                                        <br/>
-					</td>
-					<tr>
-                                        <td>
-
-					<strong>Telephone/Celphone</strong>
-					<span t-field="c.partner_phone" />
-                			</td>					
-		                        <td>
-
-					<strong>City</strong>
-					<span t-field="c.partner_city" />
-					</td>
-					</tr>
-                                        </tr>
-                                </thead>
-                        </table>                            						
-		<div class="body">
-		
-			<table class="description" style="border-style: solid; width: 100%;">
-
-				<thead>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-					<br/>
-					<tr>
-					<th>Description:</th>
-					</tr>
-					<tr>
-					<td><span t-field="c.description"/></td>
-				        </tr>
-                                        <tr>
-                                        <td>
-					<br/>
-                                        <br/>
-                                        <br/>	
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-					</td>
-                                        </tr>                                
-                                                              
-                                                                                                                                                                                                                                                                                                                        
-				</thead>
-			</table>
-		</div>
-		<div class="resolution">
-			<table class="tbl_resolution" style="border-style: solid; width: 100%;">
-			                <tr>
-                                        <td>Resolution:
-					<br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-					</td>
-              				</tr>
-			</table>
-		</div>
-                </div>	
+                    <h2>Reclamacion: <span t-field="c.id" /></h2>
+                    	<table>
+				<tr>
+					<td>Cliente <span t-field="c.partner" /></td>
+					<td>Calle <span t-field="c.street" /> </td>
+				</tr>			
+			</table>					
+                </div>
         </t>
     </t>
 </template>
