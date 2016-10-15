@@ -1,0 +1,28 @@
+
+<openerp>
+<data>
+<template id="print_claim_report_document">
+	<t t-foreach="docs" t-as="c">
+	    <t t-call="report.external_layout">
+</template>
+
+<template id="report_claims">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'crm_claim_location.print_claim_report')"/>
+        </t>
+    </t>
+</template>
+
+<report 
+            id="custom_print_claims"
+            model="crm.claim"
+            string="Print Claims"
+            report_type="qweb-pdf"
+            name="crm_claim_location.print_claim_report_document"
+            attachment_use="False"
+            file="crm_claim_location.print_claim_report_document"
+        />
+
+</data>
+</openerp>

@@ -1,0 +1,30 @@
+<!-- <?xml version="1.0"?>
+<openerp>
+    <data>    
+        <record model="ir.ui.view" id="account_update_taxes_wizard">
+            <field name="name">account.voucher.taxs_wizard_update</field>
+            <field name="model">update.vat.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Actualizar iva">
+                    <header>
+                        <button name="confirm" string="Confirm" class="oe_highlight"/>
+                        or
+                        <button name="cancel" string="Cancel" class="oe_highlight"/>
+                    </header> 
+                </form>
+            </field>
+        </record>
+
+        <act_window id="launch_wizard_update_taxes"
+                        name="Update taxes"
+                        src_model="account.invoice"
+                        res_model="update.vat.wizard"
+                        view_mode="form"
+                        target="new"
+                        key2="client_action_multi"/>
+
+
+          
+     </data>
+</openerp>
+ -->

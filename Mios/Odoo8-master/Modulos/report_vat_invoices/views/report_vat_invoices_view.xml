@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="account_taxes_informations">
+            <field name="name">account.voucher.taxs_information</field>
+            <field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+            <field name="amount_total" position="before">
+                <field name="amount_partner" string="Amount Partner" sum="Total partner"/>
+                <field name="amount_supplier" string="Amount Supplier" sum="Total supplier"/>                
+            </field>
+            </field>
+        </record>          
+          
+     </data>
+</openerp>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="crm_case_claims_location_tree_view">
+            <field name="name">invoice.report.vat.tree</field>
+            <field name="model">account.invoice</field>
+			   <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+
+            </field>
+        </record>
+
+	<record model="ir.actions.act_window" id="action_report_tax">
+	    <field name="name">Report Tax</field>
+	    <field name="res_model">account.invoice.tax.report</field>
+	    <field name="view_mode">tree,form</field>
+	</record>
+          
+          
+     </data>
+</openerp>

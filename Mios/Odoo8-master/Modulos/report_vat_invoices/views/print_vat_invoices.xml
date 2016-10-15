@@ -1,0 +1,68 @@
+
+<openerp>
+<data>
+<template id="print_vat_invoices">
+	<t t-foreach="docs" t-as="iv">
+	    <t t-call="report.external_layout">
+                    <div class="page">
+                        <table style="width: 100%;">
+                            <tr>
+                                <th>Fecha Factura</th>
+                                <th>Numero Factura</th>
+                                <th>Cliente</th>
+                                <th>Total</th>
+                                <th>Iva 21%</th>
+                                <th>Iva 10%</th>
+                                <th>Neto</th>                                
+                            </tr>
+                        </table>
+                        <t t-foreach="iv.invoice_line" t-as='lines'>
+
+                            <t t-set="iva">
+                                <t t-esc="lines.price_subtotal * 100"></t>
+                            </t>
+                        <t t-foreach="iva" t-as="report_iva">
+                            <table style="width: 100%; border: solid;">
+                                <tr>
+                                    <td colspan="8">1</td>
+                                    <td colspan="2">5</td>
+                                    <td colspan="2">3</td>
+                                    <td colspan="2">4</td>
+                                    <td colspan="2">5</td>
+                                    <td>6</td>
+                                    <td colspan="2">7</td>
+                                    <td>8</td>
+                                </tr>
+                            </table>
+                                <t t-esc="report_iva">
+
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </t>
+            </t>
+</template>
+
+
+
+<template id="report_vat_invoice">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'account_invoice.print_vat_invoices')"/>
+        </t>
+    </t>
+</template>
+
+<report 
+            id="custom_vat_invoice_print"
+            model="account.invoice"
+            string="Print vat report"
+            report_type="qweb-pdf"
+            name="report_vat_invoices.print_vat_invoices"
+            attachment_use="False"
+            file="report_vat_invoices.print_vat_invoices"
+        />
+
+</data>
+</openerp>
