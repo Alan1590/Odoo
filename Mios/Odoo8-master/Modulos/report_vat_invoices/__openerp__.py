@@ -34,11 +34,11 @@ Account.invoice adds a menu to print the report or VAT , for a quick look , you 
     """,
     'author': 'Alan Gon',
     'website': 'https://www.facebook.com/alanxls.gon',
-    'depends': ['account'],
+    'depends': ['account','report'],
     'data': [
-        'views/report_vat_invoices_view.xml',
-        'views/print_vat_invoices.xml',
-        'wizard/report_vat_wizard_view.xml',
+        'views/report_vat_invoice_view.xml',
+        'views/print_report_vat_invoice.xml',
+        # 'wizard/report_vat_wizard_view.xml',
         # 'wizard/update_vat_wizard_view.xml'    
     
     ],
