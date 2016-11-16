@@ -15,7 +15,7 @@ class report_vat_invoice(osv.osv):
         'date_start': fields.date(),
         'date_end': fields.date(),
         'company_id': fields.many2one('res.company',string="Company"),
-        'invoices_id': fields.many2many('account.invoice',string="Invoices",limit=80),
+        'invoices_id': fields.many2many('account.invoice',string="Invoices"),
         'tax_27': fields.float(computed="get_vat_amount"),
         'tax_21': fields.float(computed="get_vat_amount"),
         'tax_105': fields.float(computed="get_vat_amount"),

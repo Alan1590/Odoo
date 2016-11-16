@@ -46,7 +46,7 @@
                                 </group>
                                 <group colspan="2">
                                     <separator string="List of invoices" />
-                                    <field name="invoices_id" domain="[('state','!=','draft')]" widget="many2many">
+                                    <field name="invoices_id" domain="[('state','!=','draft')]" widget="many2many" nolabel="1" option="{'limit': 80}">
                                        <tree>
                                           <field name="partner_id"/>
                                           <field name="date_invoice"/>
@@ -83,7 +83,7 @@
         </record>
 
 
-         <menuitem id="menu_report_vat" name="Report vat" parent="base.menu_reporting"/>  
+         <menuitem id="menu_report_vat" name="Report vat" parent="account.menu_finance_reporting"/>  
          <menuitem id="menu_repot_vat_children" name="Report vat invoices" 
             parent="menu_report_vat" action="report_vat_invoices_action"/>
      </data>
