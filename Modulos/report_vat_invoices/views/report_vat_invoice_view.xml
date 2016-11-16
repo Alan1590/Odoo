@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.actions.act_window" id="report_vat_invoices_action">            
+            <field name="name">Report vat Invoices</field>
+            <field name="res_model">report.vat.invoices</field>
+            <field name="view_mode">tree,form</field>
+        </record>          
+
+        <record model="ir.ui.view" id="report_vat_invoices_tree">
+            <field name="name">report.vat.invoices.tree</field>
+            <field name="model">report.vat.invoices</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+            <tree string="reports">
+                <field name="name" string="Name"/>
+                <field name="date_start" string="Date start"/>
+                <field name="date_end" string="Date end"/>      
+                <field name="tax_27" string="Tax of 27"/>
+                <field name="tax_21" string="Tax of 21" />                
+                <field name="tax_105" string="Tax of 10.5" />                                              
+                <field name="amount_vat" string="Amount"/>
+            </tree>
+        </field>
+        </record>
+
+        <record model="ir.ui.view" id="report_vat_invoices_form">
+            <field name="name">report.vat.invoices.form</field>
+            <field name="model">report.vat.invoices</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form string="Report Invoices">
+                <header>
+                    <button name="get_vat_amount" string="Calculate" type="object" />
+
+                </header>
+                    <sheet>
+                        <group col="4">
+                                <group colspan="4">
+                                    <separator string="Invoice report" colspan="2"/>
+                                    
+                                    <field name="name" string="Title" colspan="2"/>
+                                    <field name="company_id" string="Company" colspan="2"/>
+                                    <field name="date_start" string="Date Start" colspan="2"/>
+                                    <field name="date_end" string="Date End" colspan="2"/>
+                                </group>
+                                <group colspan="2">
+                                    <separator string="List of invoices" />
+                                    <field name="invoices_id" domain="[('state','!=','draft')]" widget="many2many" nolabel="1" option="{'limit': 80}">
+                                       <tree>
+                                          <field name="partner_id"/>
+                                          <field name="date_invoice"/>
+                                          <field name="number"/>
+                                          <field name="state"/>
+                                          <field name="amount_untaxed"/>
+                                          <field name="amount_tax"/>
+                                          <field name="amount_total"/>
+                                          <field name="state"/>                                          
+                                       </tree>
+                                    </field>
+                                </group>
+<!--                            
+                                    <notebook colspan="4">
+                                    <page string="">
+                                    <group>
+                                        <separator string="List of invoices" colspan="4"/>
+                                        <field name="invoices_id" domain="[('state','!=','draft')]" colspan="4"/>
+                                    </group>
+                                        </page>
+                                    </notebook>
+                   
+                                <notebook colspan="4">
+                                    <page string="Description">
+                                        <field name="name"/>
+                                    </page>
+                                </notebook>
+         -->
+                              </group>
+
+                    </sheet>
+                </form>
+        </field>
+        </record>
+
+
+         <menuitem id="menu_report_vat" name="Report vat" parent="account.menu_finance_reporting"/>  
+         <menuitem id="menu_repot_vat_children" name="Report vat invoices" 
+            parent="menu_report_vat" action="report_vat_invoices_action"/>
+     </data>
+</openerp>

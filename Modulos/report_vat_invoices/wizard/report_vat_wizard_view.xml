@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="account_taxes_wizard">
+            <field name="name">account.voucher.taxs_wizard_view</field>
+            <field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+                <field name="amount_total" position="after">
+                    <button name="update_tax" string="UT" invisible="1"/>            
+                </field>
+            </field>
+        </record>          
+    
+        
+        <act_window id="launch_wizard_view_taxes"
+                        name="View taxes"
+                        src_model="account.invoice"
+                        res_model="account.invoice"
+                        view_mode="tree"
+                        target="current"
+                        key2="client_action_multi"/>          
+     </data>
+</openerp>
