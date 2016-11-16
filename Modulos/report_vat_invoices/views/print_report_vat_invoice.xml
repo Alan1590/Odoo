@@ -3,7 +3,6 @@
 <data>
 <template id="print_report_invoices">
 	<t t-foreach="docs" t-as="report">
-	    <t t-call="report.external_layout">
             <div class="page">
     			<div class="head">
                     <p><h3 style="text-align: center;"><span t-field="report.name"/></h3></p>
@@ -86,7 +85,6 @@
                 </div>
 		</div>	
         </t>
-    </t>
 </template>
 
 <template id="report_invoices">
