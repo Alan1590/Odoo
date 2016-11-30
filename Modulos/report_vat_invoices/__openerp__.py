@@ -38,6 +38,8 @@ Account.invoice adds a menu to print the report or VAT , for a quick look , you 
     'data': [
         'views/report_vat_invoice_view.xml',
         'views/print_report_vat_invoice.xml',
+        'security/acces_control_vat.xml',
+        'security/ir.model.access.csv',
         # 'wizard/report_vat_wizard_view.xml',
         # 'wizard/update_vat_wizard_view.xml'    
     

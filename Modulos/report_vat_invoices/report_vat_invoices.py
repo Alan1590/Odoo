@@ -3,7 +3,7 @@ from openerp.osv import fields, osv
 import logging
 logger = logging.getLogger(__name__)
 
-class report_vat_invoice(osv.osv):
+class report_vat_invoices(osv.osv):
     """ Print tax from invoice
     """
     _name = "report.vat.invoices"
@@ -26,43 +26,46 @@ class report_vat_invoice(osv.osv):
     @api.multi
     @api.depends('invoices_id','tax_27','tax_21','tax_105')
     def get_vat_amount(self):
-        self.tax_27 =0.0
-        self.tax_21 =0.0
-        self.tax_105 =0.0
-        self.amount_vat=0.0
-        for record in self.invoices_id:            
-                for tax_list in record.tax_line:
-                        #FACTURAS DE VENTA SEGUN IVA POSITIVO
-                        if tax_list.name == '01003006:V' and record.journal_id.type=='sale':
-                            self.tax_27 += tax_list.amount
-                        elif tax_list.name == '01003005:V' and record.journal_id.type=='sale':
-                            self.tax_21 += tax_list.amount                   
-                        elif tax_list.name == '01003004:V' and record.journal_id.type=='sale':
-                            self.tax_105 += tax_list.amount
-                        #NOTAS DE CREDITOS IVA NEGATIVO
-                        elif tax_list.name == '01003006:V' and record.journal_id.type=='sale_refund':
-                            self.tax_27 -= tax_list.amount
-                        elif tax_list.name == '01003005:V' and record.journal_id.type=='sale_refund':
-                            self.tax_21 -= tax_list.amount                   
-                        elif tax_list.name == '01003004:V' and record.journal_id.type=='sale_refund':
-                            self.tax_105 -= tax_list.amount
-                        #FACTURAS DE COMPRA IVA NEGATIVO
-                        elif tax_list.name == '01003006:C' and record.journal_id.type=='purchase':
-                            self.tax_27 -= tax_list.amount                        
-                        elif tax_list.name == '01003005:C' and record.journal_id.type=='purchase':
-                            self.tax_21 -= tax_list.amount                   
-                        elif tax_list.name == '01003004:C' and record.journal_id.type=='purchase':
-                            self.tax_105 -= tax_list.amount
-                        #NOTAS DE CREDITOS FACTURAS COMPRA IVA POSITIVO   
-                        elif tax_list.name == '01003006:C' and record.journal_id.type=='purchase_refund':
-                            self.tax_27 += tax_list.amount
-                        elif tax_list.name == '01003005:C' and record.journal_id.type=='purchase_refund':
-                            self.tax_21 += tax_list.amount                   
-                        elif tax_list.name == '01003004:C' and record.journal_id.type=='purchase_refund':
-                            self.tax_105 += tax_list.amount
+        self.tax_27 = self._get_vat_27()
+        self.tax_21 = self._get_vat_21()
+        self.tax_105 = self._get_vat_105()  
         self.amount_vat = self.tax_27 + self.tax_21 + self.tax_105                         
 
+    def _get_vat_27(self):
+        tax_27 = 0
+        for record in self.invoices_id:            
+                for tax_list in record.tax_line:
+                    if tax_list.name == '01003006:V' and record.journal_id.type=='sale':                        
+                        tax_27 += tax_list.amount
+                    elif tax_list.name == '01003006:C' and record.journal_id.type=='purchase':
+                        tax_27 -= tax_list.amount       
+        return tax_27
 
+    def _get_vat_21(self):
+        tax_21=0.0
+        for record in self.invoices_id:            
+                for tax_list in record.tax_line:
+                    if tax_list.name == '01003005:V' and record.journal_id.type=='sale':                        
+                        tax_21 += tax_list.amount
+                    elif tax_list.name == '01003005:C' and record.journal_id.type=='purchase':
+                        tax_21 -= tax_list.amount       
+        return tax_21
+
+    def _get_vat_105(self):
+        tax_105 = 0.0
+        for record in self.invoices_id:            
+                for tax_list in record.tax_line:
+                    if tax_list.name == '01003004:V' and record.journal_id.type=='sale':                        
+                        tax_105 += tax_list.amount
+                    elif tax_list.name == '01003004:C' and record.journal_id.type=='purchase':
+                        tax_105 -= tax_list.amount                   
+        return tax_105
+
+    @api.multi
+    @api.depends('account.invoice')
+    def fill_invoices_list(self,cr,uid,id,context=None):
+        list_invoices = self.pool.get('account.invoice').search(cr,uid,id,[('date_invoice','>=','01/11/2016'),
+            ('date_invoice','<=','30/11/2016')],context=context)
 
 
     # @api.one
