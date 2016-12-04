@@ -18,7 +18,10 @@
                 <field name="date_end" string="Date end"/>      
                 <field name="tax_27" string="Tax of 27"/>
                 <field name="tax_21" string="Tax of 21" />                
-                <field name="tax_105" string="Tax of 10.5" />                                              
+                <field name="tax_105" string="Tax of 10.5" />            
+                <field name="total_vat_nc" string="Total Vat Nc" />             
+                <field name="total_vat_sale" string="Total Vat Sale" />             
+                <field name="total_vat_purchase" string="Total Vat Purchase" />                                              
                 <field name="amount_vat" string="Amount"/>
             </tree>
         </field>

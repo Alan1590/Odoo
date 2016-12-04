@@ -1,0 +1,6 @@
+id = unique identify for the permission (Example: MY_MODULE_res_partner_manager)
+name = unique name for the permission (Example: res_partner manager)
+model_id/id = the model unique name of the class you want apply permission on (Example model_res_partner)
+group_id/id = group permission apply on (yopu can define it in xml group file or call an existing group with syntax module.group_id)
+perm_read,perm_write,perm_create,perm_unlink = the 4 values for the relative permission to read, write,create,unlink record on defined class. 1 is True (you can do this action) and 0 is Faslse (you can't)
+
