@@ -85,9 +85,19 @@
         </field>
         </record>
 
-
          <menuitem id="menu_report_vat" name="Report vat" parent="account.menu_finance_reporting"/>  
          <menuitem id="menu_repot_vat_children" name="Report vat invoices" 
             parent="menu_report_vat" action="report_vat_invoices_action"/>
+
+	<record id="paperformat_frenchcheck" model="report.paperformat">
+	    <field name="name">Report iva</field>
+	    <field name="format">A4</field>
+	    <field name="orientation">Landscape</field>
+	    <field name="margin_top">3</field>
+	    <field name="margin_bottom">3</field>
+	    <field name="margin_left">3</field>
+	    <field name="margin_right">3</field>
+	</record>
+
      </data>
 </openerp>

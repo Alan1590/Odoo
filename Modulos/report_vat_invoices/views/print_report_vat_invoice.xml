@@ -67,9 +67,13 @@
                                         <td colspan="5"><span t-field="invoices.supplier_invoice_number"/></td>
                                         <td colspan="5"><span t-field="invoices.partner_id"/></td>
                                         <td colspan="2"><span t-field="invoices.partner_id.document_number"/></td>
-                                        <td colspan="2"><span t-field="invoices.amount_tax" /></td>     
-                                        <td colspan="1"><span t-field="invoices.amount_untaxed"/></td>
-                                        <td colspan="1"><span t-field="invoices.amount_total"/></td>
+					<t t-foreach="report.tax_line" t-as="tax_line">
+					<t t-if='tax_line.name=01003005:V'>
+				                <td colspan="2"><span t-field="tax_line.amount" /></td>
+					</t>					
+					<t t-if='tax_line.name=01003004:V'>
+				                <td colspan="2"><span t-field="tax_line.amount" /></td>
+					</t>
                                     </tr>
                                 </t>
                             </t>
