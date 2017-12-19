@@ -1,118 +1,117 @@
 
+
 <openerp>
 <data>
 <template id="print_report_invoices">
+<t t-call="report.html_container">
 
 	<t t-foreach="docs" t-as="report">
             <div class="page">
     			<div class="head">
-                    <p><h3 style="text-align: center;"><span t-field="report.name"/></h3></p>
-                    <p><h5 style="text-align: right;"><b>Date Start: </b><span t-field="report.date_start"/></h5></p>
-                    <p><h5 style="text-align: right;"><b>Date End: </b><span t-field="report.date_end"/></h5></p>
+                    <p><h5 style="text-align: center;"><span t-field="report.name"/></h5></p>
+                    <p><h5 style="text-align: right;">Date Start:<span t-field="report.date_start"/></h5></p>
+                    <p><h5 style="text-align: right;">Date End:<span t-field="report.date_end"/></h5></p>
                 </div>    	
-                <div class="body_sale">
-                    <h3 align="center">FACTURAS VENTA</h3>
-                    <table class="sale" col="20" style="padding: 8px; width: 100%; text-align: center;">
-
+                    <h5 align="center">FACTURAS VENTA</h5>
+                    <table class="table table-condensed" style="width: 100%;">
                         <tr>
-                            <th colspan="2">Fecha Factura</th>
-                            <th colspan="4">Numero Factura</th>
-                            <th colspan="5">Cliente</th>
-                            <th colspan="2">Cuit/Dni</th>                                         
-                            <th colspan="2">Impuestos 27%</th>    
-                            <th colspan="2">Impuestos 21%</th>    
-                            <th colspan="2">Impuestos 10%</th>  
-                            <th colspan="1">Neto</th>
-                            <th colspan="1">Total</th>
+                            <td>Fecha Factura</td>
+                            <td >Numero Factura</td>
+                            <td >Cliente</td>
+                            <td >Cuit/Dni</td>
+                            <td >Iva 27%</td>    
+                            <td>Iva 21%</td>  
+                            <td>Iva 10%</td>  
+                            <td>Neto</td>
+                            <td>Total</td>
                         </tr>
-                            <t t-foreach="report.invoices_id" t-as="invoices">                        
+                           <t t-foreach="report.invoices_id" t-as="invoices">                        
                             <t t-if="'sale' in invoices.journal_id.type">
-                            <tr>
-                                <td colspan="2"><span t-field="invoices.date_invoice"/></td>
-                                <td colspan="4"><span t-field="invoices.number"/></td>
-                                <td colspan="5"><span t-field="invoices.partner_id"/></td>
-                                <td colspan="2"><span t-field="invoices.partner_id.document_number"/></td>
-					<t t-set="iva_27" t-value="0"></t>
-					<t t-set="iva_21" t-value="0"></t>
-					<t t-set="iva_10" t-value="0"></t>
+                            <tr> 
+                                <td><t t-esc="invoices.date_invoice"></t></td>
+                                <td><t t-esc="invoices.number"></t></td>
+                                <td><t t-esc="invoices.partner_id.name.upper()[0:20]"></t></td>
+                                <td><t t-esc="invoices.partner_id.document_number"></t></td>
+					<t t-set="iva_27" t-value="0"/>
+					<t t-set="iva_21" t-value="0"/>
+					<t t-set="iva_10" t-value="0"/>
 					<t t-foreach="invoices.tax_line" t-as="tax_line">
 						<t t-if="'01003006:V' in tax_line.name">
-							<t t-set="iva_27" t-value="iva_27+tax_line.amount"></t>
+							<t t-set="iva_27" t-value="iva_27+tax_line.amount"/>
 			                        </t>
 						<t t-if="'01003005:V' in tax_line.name">
-							<t t-set="iva_21" t-value="iva_21+tax_line.amount"></t>
+							<t t-set="iva_21" t-value="iva_21+tax_line.amount"/>
 			                        </t>
 						<t t-if="'01003004:V' in tax_line.name">
-							<t t-set="iva_10" t-value="iva_10+tax_line.amount"></t>					
+							<t t-set="iva_10" t-value="iva_10+tax_line.amount"/>					
 			                        </t>
 					</t>				
-					<td colspan="2"><t t-esc="iva_27"/></td>
-        				<td colspan="2"><t t-esc="iva_21"/></td>
-					<td colspan="2"><t t-esc="iva_10"/></td>
-                                <td colspan="1"><span t-field="invoices.amount_untaxed"/></td>
-                                <td colspan="1"><span t-field="invoices.amount_total"/></td>
+					<td><t t-esc="iva_27"/></td>
+        				<td><t t-esc="iva_21"/></td>
+					<td><t t-esc="iva_10"/></td>
+                                <td><t t-esc="invoices.amount_untaxed"></t></td>
+                                <td><t t-esc="invoices.amount_total"></t></td>
                             </tr>
                             </t>
                             </t>
                     </table>
-                    <table style="width: 100%; text-align: center; margin-top: 20%">
+
+
+                    <table style="width: 100%; text-align: center;">
                         <tr align="center">
                             <t t-set="total_iva_v" t-value="report.total_vat_sale + report.total_vat_nc"/>
-                            <td><h5><b>TOTAL IVA VENTA</b> <t t-esc="total_iva_v" /> </h5></td>
+                            <td><h5><b>TOTAL IVA VENTA</b> <t t-esc="total_iva_v"/> </h5></td>
                         </tr>
                     </table>
-
-                </div>
-
-                <div class="body_purchase" style="margin-top: 10%">
-                    <h3 align="center">FACTURAS COMPRA</h3>
-                    <table class="purchase" col="16" style="padding: 6px; width: 100%; text-align: center;">
+                <div class="fact_comp">
+                    <h5 align="center">FACTURAS COMPRA</h5>
+                    <table class="table table-condensed" style="width: 100%;">
 
                         <tr>
-                            <th colspan="2">Fecha Factura</th>
-                            <th colspan="4">Numero Factura</th>
-                            <th colspan="5">Numero Proveedor</th>
-                            <th colspan="5">Cliente</th>
-                            <th colspan="2">Cuit/Dni</th>                                       
-                            <th colspan="2">Impuestos 27%</th>    
-                            <th colspan="2">Impuestos 21%</th>    
-                            <th colspan="2">Impuestos 10%</th>    
-                            <th colspan="1">Neto</th>
-                            <th colspan="1">Total</th>
+                            <th >Fecha Factura</th>
+                            <th>Numero Factura</th>
+                            <th>Numero Proveedor</th>
+                            <th>Cliente</th>
+                            <th>Cuit/Dni</th>                                       
+                            <th>Iva 27%</th>    
+                            <th>Iva 21%</th>    
+                            <th>Iva 10%</th>    
+                            <th>Neto</th>
+                            <th>Total</th>
                         </tr>
                             <t t-foreach="report.invoices_id" t-as="invoices">                        
                                 <t t-if="'purchase' in invoices.journal_id.type">
                                     <tr>
-                                        <td colspan="2"><span t-field="invoices.date_invoice"/></td>
-                                        <td colspan="4"><span t-field="invoices.number"/></td>
-                                        <td colspan="5"><span t-field="invoices.supplier_invoice_number"/></td>
-                                        <td colspan="5"><span t-field="invoices.partner_id"/></td>
-                                        <td colspan="2"><span t-field="invoices.partner_id.document_number"/></td>
-					<t t-set="iva_27" t-value="0"></t>
-					<t t-set="iva_21" t-value="0"></t>
-					<t t-set="iva_10" t-value="0"></t>
+                                        <td><t t-esc="invoices.date_invoice"></t></td>
+                                        <td><t t-esc="invoices.number"></t></td>
+                                        <td><t t-esc="invoices.supplier_invoice_number"></t></td>
+                                        <td><t t-esc="invoices.partner_id.name.upper()[0:20]"></t></td>
+                                        <td><t t-esc="invoices.partner_id.document_number"></t></td>
+					<t t-set="iva_27" t-value="0"/>
+					<t t-set="iva_21" t-value="0"/>
+					<t t-set="iva_10" t-value="0"/>
 					<t t-foreach="invoices.tax_line" t-as="tax_line">
 						<t t-if="'01003006:C' in tax_line.name">
-							<t t-set="iva_27" t-value="iva_27+tax_line.amount"></t>
+							<t t-set="iva_27" t-value="iva_27+tax_line.amount"/>
 			                        </t>
 						<t t-if="'01003005:C' in tax_line.name">
-							<t t-set="iva_21" t-value="iva_21+tax_line.amount"></t>
+							<t t-set="iva_21" t-value="iva_21+tax_line.amount"/>
 			                        </t>
 						<t t-if="'01003004:C' in tax_line.name">
-							<t t-set="iva_10" t-value="iva_10+tax_line.amount"></t>					
+							<t t-set="iva_10" t-value="iva_10+tax_line.amount"/>					
 			                        </t>
 					</t>				
-					<td colspan="2"><t t-esc="iva_27"/></td>
-        				<td colspan="2"><t t-esc="iva_21"/></td>
-					<td colspan="2"><t t-esc="iva_10"/></td>
-		                        <td colspan="1"><span t-field="invoices.amount_untaxed"/></td>
-		                        <td colspan="1"><span t-field="invoices.amount_total"/></td>
+					<td ><t t-esc="iva_27"></t></td>
+        				<td ><t t-esc="iva_21"></t></td>
+					<td><t t-esc="iva_10"></t></td>
+		                        <td><t t-esc="invoices.amount_untaxed"></t></td>
+		                        <td><t t-esc="invoices.amount_total"></t></td>
 
 	                            </tr>
                             </t>
                             </t>
                     </table>
-                    <table style="width: 100%; text-align: center; margin-top: 20%">
+                    <table style="width: 100%; text-align: center;">
                         <tr align="center">
 		            <t t-set="total_iva_c" t-value="report.total_vat_sale + report.total_vat_nc"/>	
                             <td><h5><b>TOTAL IVA COMPRA</b> <span t-field="report.total_vat_purchase"/></h5></td>
@@ -120,18 +119,18 @@
                     </table>
 
                 </div>
-                <div class="end_report" style="margin-top: 10%">
-                        <table class="foot_report" style="padding: 6px; width: 100%; text-align: center; margin-top: 10%;">
+                <div class="end_report" >
+                        <table class="foot_report" style="width: 100%; text-align: center;">
                             <tr align="right">
-                                <td><i>TOTAL IVA(27%): </i><t t-esc="report.tax_27" /></td>
+                                <td><i>TOTAL IVA(27%): </i><t t-esc="report.tax_27"/></td>
                             </tr>
 
                             <tr align="right">
-                                <td><i>TOTAL IVA(21%): </i><t t-esc="report.tax_21" /></td>
+                                <td><i>TOTAL IVA(21%): </i><t t-esc="report.tax_21"/></td>
                             </tr>
 
                             <tr align="right">
-                                <td><i>TOTAL IVA(10,5%): </i><t t-esc="report.tax_105" /></td>
+                                <td><i>TOTAL IVA(10,5%): </i><t t-esc="report.tax_105"/></td>
                             </tr>
                             <tr align="right">
                                 <td><i>IVA FINAL: </i><t t-esc="report.amount_vat"/></td>                            
@@ -141,6 +140,8 @@
                 </div>
 		</div>	
         </t>
+        </t>
+</t>
 </template>
 
 <template id="report_invoices">
